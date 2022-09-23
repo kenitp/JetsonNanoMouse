@@ -1092,13 +1092,6 @@ static ssize_t pwm_motorr_write(struct file *filep, const char __user *buf,
 		return ret;
 	}
 
-	if (pwm_freq < 0) {
-		gpio_set_value(GPIO_MOTOR_DIR_R, 0);
-		pwm_freq *= -1;
-	} else {
-		gpio_set_value(GPIO_MOTOR_DIR_R, 1);
-	}
-
 	ret = pwm_motorr_write_core(pwm_freq);
 	if (ret < 0)
 		return ret;
